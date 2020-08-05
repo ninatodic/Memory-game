@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container" id="startGame">
+      <h1>Sponge Bob Memory Game</h1>
+      <h3>Select level</h3>
+      <div id="levelBtns">
+        <button class="startButtons" id="easy">
+          Easy
+        </button>
+        <button
+          class="startButtons"
+          id="medium"
+          onclick="localStorage.setItem('level', 'medium')"
+        >
+          Medium
+        </button>
+        <button
+          class="startButtons"
+          id="hard"
+          onclick=" localStorage.setItem('level', 'hard')"
+        >
+          Hard
+        </button>
+      </div>
+    </div>
+    <div class="container" id="game">
+      <h1>Sponge Bob Memory Game</h1>
+      <div class="info">
+        <p>Time: <span id="time">00:00</span></p>
+        <p>Moves: <span id="moves">0</span></p>
+      </div>
+      <div id="grid"></div>
+      <div class="buttons">
+        <button class="gameButtons" id="newGameBtn">
+          New Game
+        </button>
+        <button class="gameButtons" id="chooseLevelBtn">
+          Choose Level
+        </button>
+
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <button class="close" id="close">X</button>
+            <h3>Congradulation!!!</h3>
+            <p>
+              You have finised game with <span id="finishedMoves"></span> moves,
+              in <span id="finishTime"></span> minutes
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
