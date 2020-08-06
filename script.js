@@ -54,6 +54,7 @@ const modal = document.getElementById("myModal");
 const newGameBtn = document.getElementById("newGameBtn");
 const chooseLevelBtn = document.getElementById("chooseLevelBtn");
 const closeBtn = document.getElementById("close");
+let imagesGame = [];
 let level = "";
 let movesNr = 0;
 let matchNr = 0;
@@ -62,18 +63,21 @@ let timeElapsed = "";
 
 //Hide container with level options, show gameboard and start time
 function startGame() {
+  resetParameters();
   containerGame.style.display = "block";
   containerLevel.style.display = "none";
+
   if (level == "easy") {
-    images = images.slice(0, 3);
+    imagesGame = images.slice(0, 3);
   }
   if (level == "medium") {
-    images = images.slice(0, 6);
+    imagesGame = images.slice(0, 6);
   }
   if (level == "hard") {
-    images = images.slice(0, 12);
+    imagesGame = images.slice(0, 12);
   }
-  images = [...images, ...images].sort(() => Math.random() - 0.5);
+  imagesGame = [...imagesGame, ...imagesGame].sort(() => Math.random() - 0.5);
+  console.log(imagesGame);
   distributeElements(level);
   cards = document.getElementsByClassName("el");
   timeElapsed = setInterval(showTime, 1000);
@@ -118,7 +122,7 @@ function showTime() {
 
 // flip clicked card
 function flipCard(e) {
-  cards[e].setAttribute("src", images[e].path);
+  cards[e].setAttribute("src", imagesGame[e].path);
   cards[e].style.pointerEvents = "none";
 }
 
@@ -214,6 +218,8 @@ function resetParameters() {
   seconds = 0;
   time.innerHTML = "00:00";
   moves.innerHTML = "0";
+  matchNr = 0;
+  movesNr = 0;
 }
 
 //event listeners
