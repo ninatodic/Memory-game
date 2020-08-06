@@ -70,7 +70,7 @@ function startGame() {
   if (level == "medium") {
     images = images.slice(0, 6);
   }
-  if (level == "easy") {
+  if (level == "hard") {
     images = images.slice(0, 12);
   }
   images = [...images, ...images].sort(() => Math.random() - 0.5);
