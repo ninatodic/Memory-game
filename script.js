@@ -44,7 +44,6 @@ const backgroundImgPath = "./img/background.jpg";
 const grid = document.getElementById("grid");
 let cards = [];
 let flipedCards = [];
-const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 const moves = document.getElementById("moves");
 const time = document.getElementById("time");
 const easyBtn = document.getElementById("easy");
@@ -132,20 +131,23 @@ async function checkMatch() {
     flipedCards[0].getAttribute("src") == flipedCards[1].getAttribute("src")
   ) {
     matchNr += 1;
-    await delay(1000);
-    flipedCards[0].style.visibility = "hidden";
-    flipedCards[1].style.visibility = "hidden";
-    flipedCards = [];
-    isGameOver();
+    setTimeout(() => {
+      flipedCards[0].style.visibility = "hidden";
+      flipedCards[1].style.visibility = "hidden";
+      flipedCards = [];
+      isGameOver();
+      alowFliping();
+    }, 1000);
   } else {
-    await delay(1000);
-    flipedCards[0].setAttribute("src", backgroundImgPath);
-    flipedCards[1].setAttribute("src", backgroundImgPath);
-    flipedCards[0].style.pointerEvents = "auto";
-    flipedCards[1].style.pointerEvents = "auto";
-    flipedCards = [];
+    setTimeout(() => {
+      flipedCards[0].setAttribute("src", backgroundImgPath);
+      flipedCards[1].setAttribute("src", backgroundImgPath);
+      flipedCards[0].style.pointerEvents = "auto";
+      flipedCards[1].style.pointerEvents = "auto";
+      flipedCards = [];
+      alowFliping();
+    }, 1000);
   }
-  alowFliping();
 }
 
 //prevent fliping if two cards are already flipped
